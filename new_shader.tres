@@ -1,0 +1,13 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type spatial;
+
+void vertex(){
+	VERTEX.y+=sin(VERTEX.x*10.0*VERTEX.z+TIME*2.0);
+}
+
+void fragment(){
+	ALBEDO.r=clamp(VERTEX.y,0.0,1.0);
+	ALBEDO.gb=vec2(0.0,0.0);
+}"
