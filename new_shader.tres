@@ -4,6 +4,8 @@
 code = "shader_type spatial;
 
 uniform sampler2D textur;
+uniform float multiplier=2.0;
+
 
 varying vec3 vert;
 
@@ -21,7 +23,7 @@ void vertex(){
 
 
 void fragment(){
-	vec3 color = texture(textur,vert.xz/2.0+vec2(0.5,0.5)).rgb;
+	vec3 color = texture(textur,vert.xz*multiplier+vec2(0.5,0.5)).rgb;
 	float darkness = (color.r+color.b+color.g)/3.0;
 	ALBEDO.r=sin(vert.x*10.0*vert.z+TIME*2.0);
 	ALBEDO=color;
