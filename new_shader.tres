@@ -5,19 +5,31 @@ code = "shader_type spatial;
 
 uniform sampler2D textur;
 
+varying vec3 vert;
+
 void vertex(){
+	vert.x=VERTEX.x;
+	vert.y=VERTEX.y;
+	vert.z=VERTEX.z;
 //	VERTEX.y+=sin(VERTEX.x*10.0*VERTEX.z+TIME*2.0);
 	VERTEX.x*=10.0;
 	VERTEX.z*=10.0;
+	
+	
 }
 
 
 
 void fragment(){
-	vec3 color = texture(textur,UV).rgb;
+	vec3 color = texture(textur,vert.xz/2.0+vec2(0.5,0.5)).rgb;
 	float darkness = (color.r+color.b+color.g)/3.0;
-	if(darkness>0.1){
-		ALBEDO=color;
+	ALBEDO.r=sin(vert.x*10.0*vert.z+TIME*2.0);
+	ALBEDO=color;
+	if(darkness<0.3){
+		ALBEDO=vec3(1.0,0.0,0.0);
+	}
+	else{
+		ALBEDO=vec3(1.0,1.0,1.0);
 	}
 		
 }
