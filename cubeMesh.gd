@@ -2,5 +2,7 @@ tool
 extends MeshInstance
 
 func _ready():
-	mesh
-	ArrayMesh
+	var colorsstream = load("res://colors.png")
+	var colors = colorsstream.get_data()
+	colors.lock()
+	print(colors.get_pixel(9,9))
