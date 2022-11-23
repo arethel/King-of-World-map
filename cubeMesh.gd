@@ -7,16 +7,16 @@ func _ready():
 #	colors.lock()
 	
 	var tr = load("res://tr.png")
-	var new_img = Image.new()
-	new_img.create(tr.get_width(),tr.get_height(),false,Image.FORMAT_RGBA8)
-	new_img.lock()
-	tr.lock()
-	for i in range(tr.get_width()-2):
-		for j in range(tr.get_height()-2):
-			check_line(tr,i+1,j+1,new_img)
-	tr.unlock()
-	new_img.unlock()
-	new_img.save_png("res://my_png.png")
+#	var new_img = Image.new()
+#	new_img.create(tr.get_width(),tr.get_height(),false,Image.FORMAT_RGBA8)
+#	new_img.lock()
+#	tr.lock()
+#	for i in range(tr.get_width()-2):
+#		for j in range(tr.get_height()-2):
+#			check_line(tr,i+1,j+1,new_img)
+#	tr.unlock()
+#	new_img.unlock()
+#	new_img.save_png("res://my_png.png")
 	
 	
 
