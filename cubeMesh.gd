@@ -2,19 +2,17 @@ tool
 extends MeshInstance
 
 func _ready():
+	pass
 #	var colorsstream = load("res://colors.png")
 #	var colors = colorsstream.get_data()
 #	colors.lock()
 	
-	var tr = load("res://tr.png")
 #	var new_img = Image.new()
-#	new_img.create(tr.get_width(),tr.get_height(),false,Image.FORMAT_RGBA8)
+#	new_img.create(10,10,false,Image.FORMAT_RGBA8)
 #	new_img.lock()
-#	tr.lock()
-#	for i in range(tr.get_width()-2):
-#		for j in range(tr.get_height()-2):
-#			check_line(tr,i+1,j+1,new_img)
-#	tr.unlock()
+#	for i in range(10):
+#		for j in range(10):
+#			new_img.set_pixel(i,j,Color(float(i)/10.0,float(j)/10.0,0))
 #	new_img.unlock()
 #	new_img.save_png("res://my_png.png")
 	
