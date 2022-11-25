@@ -9,12 +9,13 @@ uniform float fl;
 
 varying vec3 vert;
 
-
+vec3 get_col_by_coord(vec2 coord){
+	return vec3(floor((coord)*10.0)/10.0,0.0);
+}
 
 void vertex(){
 	float arr[3];
 	vert=VERTEX*0.5+vec3(0.5);
-//	VERTEX.y+=sin(VERTEX.x*10.0*VERTEX.z+TIME*2.0);
 	VERTEX.x*=10.0;
 	VERTEX.z*=10.0;
 	
@@ -23,32 +24,31 @@ void vertex(){
 
 
 void fragment(){
-//	vec3 color0 = texture(textur,vert.xz*multiplier+vec2(0.5,0.5)).rgb;
-//	float step = 0.0001;
-//
-//	for(float i = -step;i<=step;i+=step){
-//		for(float j = -step;j<=step;j+=step){
-//			vec3 color = texture(textur,vert.xz*multiplier+vec2(0.5,0.5)+vec2(i,j)).rgb;
-//			if(color!=color0){
-//				ALBEDO=vec3(1.0,1.0,1.0);
-//			}
-//			else{
-//				ALBEDO=vec3(1.0,0.0,0.0);
-//			}
-//		}
-//
-//	}
 	vec3 clr = vec3(floor((vert.xz)*10.0)/10.0,0.0);
 	ALBEDO=clr;
-
+	vec3 cl_to_border = vec3(0.5,0.5,0.0);
+	float st = 0.003;
+	if(get_col_by_coord(vert.xz+vec2(-st,0.0))==cl_to_border&&get_col_by_coord(vert.xz+vec2(st,0.0))!=cl_to_border){
+		ALBEDO = vec3(0.0,0.0,1.0);
+	}
+	if(get_col_by_coord(vert.xz-vec2(-st,0.0))==cl_to_border&&get_col_by_coord(vert.xz-vec2(st,0.0))!=cl_to_border){
+		ALBEDO = vec3(0.0,0.0,1.0);
+	}
+	if(get_col_by_coord(vert.xz+vec2(0.0,-st))==cl_to_border&&get_col_by_coord(vert.xz+vec2(0.0,st))!=cl_to_border){
+		ALBEDO = vec3(0.0,0.0,1.0);
+	}
+	if(get_col_by_coord(vert.xz-vec2(0.0,-st))==cl_to_border&&get_col_by_coord(vert.xz-vec2(0.0,st))!=cl_to_border){
+		ALBEDO = vec3(0.0,0.0,1.0);
+	}
+	
+	vec2 dxy = vert.xz-cl_to_border.xy*10.0;
+	if(pow(pow(dxy.x,2.0)+pow(dxy.y,2.0),0.5)<st&&get_col_by_coord(vert.xz)!=cl_to_border){
+		
+		ALBEDO = vec3(0.0,0.0,1.0);
+	}
+	
 		
 }
 
-
-
-int find_num_of_color(vec3 clr){
-	
-	return -1;
-}
 
 "
