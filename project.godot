@@ -14,6 +14,10 @@ config/name="King Of World"
 run/main_scene="res://scene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+TouchScreen="*res://touchScreen.tscn"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

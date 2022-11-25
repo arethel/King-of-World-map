@@ -22,8 +22,8 @@ omni_range = 66.951
 omni_attenuation = 1.93187
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.0110142, -0.779251, 0.626616, -0.013695, 0.626713, 0.77913, -0.999846, 0, -0.0175745, 13.118, 16.605, 0 )
-fov = 85.0
+transform = Transform( 0.999879, 0.0028425, 0.0152887, -0.013695, 0.626713, 0.77913, -0.00736697, -0.779245, 0.626676, 0.229, 16.509, 13.824 )
+fov = 59.8
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = ExtResource( 2 )
