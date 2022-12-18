@@ -9,7 +9,7 @@ uniform sampler2D zones;
 uniform float width_of_line : hint_range(0.0,0.05)=0.01;
 uniform float mixing : hint_range(0.0,1.0)=0.3;
 
-
+uniform vec3 brightZone=vec3(0.0,0.0,0.0);
 
 
 varying vec3 vert;
@@ -24,6 +24,7 @@ vec3 get_col_of_zone(vec2 coord){
 void vertex(){
 	float arr[3];
 	vert=VERTEX*0.5+vec3(0.5);
+	
 	VERTEX.x*=10.0;
 	VERTEX.z*=10.0;
 }
@@ -51,8 +52,13 @@ void fragment(){
 			}
 		}
 	}
+	if(get_col_of_zone(vert.xz)==brightZone){
+		ALBEDO=mix(ALBEDO,get_col_of_zone(vert.xz)+vec3(1.0)*round((sin((TIME/20.0+vert.x+vert.z)*80.0)+1.0)/2.0),mixing);
+	}
+	else{
+		ALBEDO=mix(ALBEDO,get_col_of_zone(vert.xz),mixing);
+	}
 	
-	ALBEDO=mix(ALBEDO,get_col_of_zone(vert.xz),mixing);
 	
 	
 }
