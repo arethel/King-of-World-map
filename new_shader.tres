@@ -23,7 +23,7 @@ vec3 get_col_of_zone(vec2 coord){
 
 void vertex(){
 	float arr[3];
-	vert=VERTEX*0.5+vec3(0.5);
+	vert=(VERTEX+vec3(9.0))/24.0;
 	
 }
 
@@ -56,6 +56,7 @@ void fragment(){
 	else{
 		ALBEDO=mix(ALBEDO,get_col_of_zone(vert.xz),mixing);
 	}
+	
 	
 	
 	
